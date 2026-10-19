@@ -1,201 +1,143 @@
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport"
-        content="width=device-width, initial-scale=1">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AR Studio | Creator Dashboard</title>
 
-  <title>AR Studio | WebAR Prototype</title>
+<script type="module"
+src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js">
+</script>
 
-  <style>
-    body {
-      margin: 0;
-      background: #0b1220;
-      color: #f8fafc;
-      font-family: system-ui, sans-serif;
-    }
+<style>
+:root {
+  --blue: #DCEFFF;
+  --lilac: #DCCBFF;
+  --lavender: #A78BFA;
+  --purple: #7455BB;
+  --white: #FFFFFF;
+  --background: #F8FBFF;
+  --text: #302B50;
+  --muted: #77758F;
+  --border: #DDD9F1;
+  --danger: #A53654;
+}
 
-    header, main {
-      max-width: 980px;
-      margin: auto;
-      padding: 24px;
-    }
+* {
+  box-sizing: border-box;
+}
 
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    #F8FBFF 0%,
+    #EAF5FF 45%,
+    #F3ECFF 100%
+  );
+  color: var(--text);
+}
 
-    h1 {
-      font-size: clamp(2rem, 6vw, 4rem);
-      margin: 0 0 12px;
-    }
+header {
+  padding: 20px 5%;
+  background: rgba(255,255,255,0.88);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
 
-    p {
-      color: #bac6d8;
-      line-height: 1.6;
-    }
+.logo {
+  font-size: 24px;
+  font-weight: 800;
+  color: var(--purple);
+}
 
-    .pill {
-      border: 1px solid #44516a;
-      padding: 7px 12px;
-      border-radius: 50px;
-    }
+header span {
+  font-size: 12px;
+  color: var(--muted);
+}
 
-    .hero {
-      padding: 50px 0;
-    }
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 35px 5%;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-    }
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  margin-bottom: 10px;
+}
 
-    .card {
-      border: 1px solid #334155;
-      border-radius: 18px;
-      padding: 22px;
-      background: #151f32;
-    }
+h2, h3 {
+  color: var(--text);
+}
 
-    button, a.action {
-      background: #e9b95d;
-      border: 0;
-      color: #111827;
-      padding: 12px 18px;
-      border-radius: 10px;
-      font-weight: 700;
-      cursor: pointer;
-      text-decoration: none;
-      display: inline-block;
-    }
+p {
+  color: var(--muted);
+  line-height: 1.6;
+}
 
-    button:disabled {
-      opacity: .45;
-      cursor: not-allowed;
-    }
+.hero {
+  margin-bottom: 30px;
+}
 
-    .preview {
-      width: 100%;
-      height: 190px;
-      object-fit: contain;
-      background: #e6f0ef;
-      border-radius: 12px;
-    }
+.eyebrow {
+  color: var(--purple);
+  font-weight: bold;
+  font-size: 12px;
+  letter-spacing: 1px;
+}
 
-    .muted {
-      font-size: 13px;
-    }
+.stats {
+  display: grid;
+  grid-template-columns:
+    repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin: 25px 0;
+}
 
-    #status {
-      margin-top: 14px;
-    }
+.stat {
+  border-radius: 18px;
+  padding: 24px;
+  border: 1px solid #C5DFF7;
+  background: var(--blue);
+}
 
-    .brand {
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
-  </style>
-</head>
+.stat:nth-child(2) {
+  background: #F0E8FF;
+  border-color: #DDD0FA;
+}
 
-<body>
+.stat:nth-child(3) {
+  background: #E5E0FF;
+  border-color: #D5C9FA;
+}
 
-<header>
-  <div class="brand">✦ AR STUDIO</div>
-  <span class="pill">Prototype v0.1</span>
-</header>
+.stat p {
+  margin: 0;
+  color: #665C82;
+  font-size: 14px;
+}
 
-<main>
+.stat h2 {
+  font-size: 38px;
+  margin: 12px 0 0;
+  color: #51447D;
+}
 
-  <section class="hero">
-    <span class="pill">
-      Create • Scan • Experience
-    </span>
-
-    <h1>Bring physical stories to life.</h1>
-
-    <p>
-      Explore image-tracked augmented reality
-      right in your browser. Start with our
-      sample target, then build your own
-      experiences.
-    </p>
-  </section>
-
-  <div class="grid">
-
-    <section class="card">
-      <h2>01 · Sample target</h2>
-
-      <img
-        class="preview"
-        src="https://raw.githubusercontent.com/hiukim/mind-ar-js/master/examples/image-tracking/assets/card-example/card.png"
-        alt="Sample tracking card"
-      >
-
-      <p>
-        Open the sample target on another screen
-        or print it. Point your phone camera at
-        it in the AR viewer.
-      </p>
-
-      <a
-        class="action"
-        target="_blank"
-        rel="noopener"
-        href="https://raw.githubusercontent.com/hiukim/mind-ar-js/master/examples/image-tracking/assets/card-example/card.png"
-      >
-        Open target
-      </a>
-    </section>
-
-    <section class="card">
-      <h2>02 · Launch camera</h2>
-
-      <p>
-        The camera viewer recognizes the sample
-        target and overlays an animated colored
-        panel attached to it.
-      </p>
-
-      <a class="action" href="viewer.html">
-        Launch WebAR
-      </a>
-
-      <p class="muted">
-        Camera permission and HTTPS
-        (or localhost) required.
-        Best tested on a mobile phone.
-      </p>
-    </section>
-
-    <section class="card">
-      <h2>03 · Creator workspace</h2>
-
-      <p>
-        Next milestone: upload a target image,
-        attach a video or 3D model, compile
-        tracking data, and publish a shareable
-        experience.
-      </p>
-
-      <button disabled>
-        Coming in v0.2
-      </button>
-    </section>
-
-  </div>
-
-  <p id="status" class="muted">
-    Tip: host these files together on GitHub
-    Pages to use the camera from your phone.
-  </p>
-
-</main>
-
-</body>
-</html>
+button {
+  background: var(--lavender);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 18px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: .2s;
