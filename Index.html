@@ -1,0 +1,201 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width, initial-scale=1">
+
+  <title>AR Studio | WebAR Prototype</title>
+
+  <style>
+    body {
+      margin: 0;
+      background: #0b1220;
+      color: #f8fafc;
+      font-family: system-ui, sans-serif;
+    }
+
+    header, main {
+      max-width: 980px;
+      margin: auto;
+      padding: 24px;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    h1 {
+      font-size: clamp(2rem, 6vw, 4rem);
+      margin: 0 0 12px;
+    }
+
+    p {
+      color: #bac6d8;
+      line-height: 1.6;
+    }
+
+    .pill {
+      border: 1px solid #44516a;
+      padding: 7px 12px;
+      border-radius: 50px;
+    }
+
+    .hero {
+      padding: 50px 0;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns:
+        repeat(auto-fit, minmax(220px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      border: 1px solid #334155;
+      border-radius: 18px;
+      padding: 22px;
+      background: #151f32;
+    }
+
+    button, a.action {
+      background: #e9b95d;
+      border: 0;
+      color: #111827;
+      padding: 12px 18px;
+      border-radius: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    button:disabled {
+      opacity: .45;
+      cursor: not-allowed;
+    }
+
+    .preview {
+      width: 100%;
+      height: 190px;
+      object-fit: contain;
+      background: #e6f0ef;
+      border-radius: 12px;
+    }
+
+    .muted {
+      font-size: 13px;
+    }
+
+    #status {
+      margin-top: 14px;
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: 1px;
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="brand">✦ AR STUDIO</div>
+  <span class="pill">Prototype v0.1</span>
+</header>
+
+<main>
+
+  <section class="hero">
+    <span class="pill">
+      Create • Scan • Experience
+    </span>
+
+    <h1>Bring physical stories to life.</h1>
+
+    <p>
+      Explore image-tracked augmented reality
+      right in your browser. Start with our
+      sample target, then build your own
+      experiences.
+    </p>
+  </section>
+
+  <div class="grid">
+
+    <section class="card">
+      <h2>01 · Sample target</h2>
+
+      <img
+        class="preview"
+        src="https://raw.githubusercontent.com/hiukim/mind-ar-js/master/examples/image-tracking/assets/card-example/card.png"
+        alt="Sample tracking card"
+      >
+
+      <p>
+        Open the sample target on another screen
+        or print it. Point your phone camera at
+        it in the AR viewer.
+      </p>
+
+      <a
+        class="action"
+        target="_blank"
+        rel="noopener"
+        href="https://raw.githubusercontent.com/hiukim/mind-ar-js/master/examples/image-tracking/assets/card-example/card.png"
+      >
+        Open target
+      </a>
+    </section>
+
+    <section class="card">
+      <h2>02 · Launch camera</h2>
+
+      <p>
+        The camera viewer recognizes the sample
+        target and overlays an animated colored
+        panel attached to it.
+      </p>
+
+      <a class="action" href="viewer.html">
+        Launch WebAR
+      </a>
+
+      <p class="muted">
+        Camera permission and HTTPS
+        (or localhost) required.
+        Best tested on a mobile phone.
+      </p>
+    </section>
+
+    <section class="card">
+      <h2>03 · Creator workspace</h2>
+
+      <p>
+        Next milestone: upload a target image,
+        attach a video or 3D model, compile
+        tracking data, and publish a shareable
+        experience.
+      </p>
+
+      <button disabled>
+        Coming in v0.2
+      </button>
+    </section>
+
+  </div>
+
+  <p id="status" class="muted">
+    Tip: host these files together on GitHub
+    Pages to use the camera from your phone.
+  </p>
+
+</main>
+
+</body>
+</html>
