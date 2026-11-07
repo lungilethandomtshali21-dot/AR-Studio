@@ -1,0 +1,211 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My Magical Grade R Adventure | Isolo Printx</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Arial,sans-serif;background:linear-gradient(145deg,#e5d9ff,#fbd7e9,#d8f1ff);color:#382c65;min-height:100vh}
+header{text-align:center;padding:22px 12px 10px}
+header h1{font-size:22px;margin:5px}
+header p{font-size:12px;letter-spacing:2px}
+.book{max-width:470px;margin:10px auto;padding:12px}
+.page{display:none;background:#fffdf9;border-radius:20px;min-height:570px;padding:25px 22px;box-shadow:0 14px 35px #60418a35;text-align:center;position:relative;overflow:hidden}
+.page.active{display:block;animation:turn .3s ease}
+@keyframes turn{from{opacity:.3;transform:translateX(15px)}to{opacity:1;transform:translateX(0)}}
+h2{font-size:28px;color:#7848b8;margin:16px 0}
+h3{color:#a052ad}
+p{line-height:1.6}
+.tag{display:inline-block;background:#f7d6f0;padding:8px 15px;border-radius:30px;font-size:12px;font-weight:bold}
+.illustration{width:100%;max-width:280px;height:270px;margin:15px auto}
+.illustration svg{width:100%;height:100%}
+.star{color:#f4a42e;font-size:27px}
+.controls{display:flex;justify-content:space-between;align-items:center;gap:10px;margin:20px auto}
+button{background:#7548bd;color:white;border:0;border-radius:30px;padding:14px 22px;font-weight:bold;font-size:15px;cursor:pointer}
+button:disabled{opacity:.35}
+.counter{font-size:13px;font-weight:bold}
+.small{font-size:13px;color:#75668c}
+.activity{background:#f7f0ff;border:2px dashed #b99ae4;border-radius:15px;padding:16px;margin-top:18px}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:15px}
+.tile{background:white;border:2px solid #d6b7f4;border-radius:12px;padding:15px;font-size:30px}
+.qr{margin:25px auto;border:3px dashed #a78bd1;width:150px;height:150px;display:flex;align-items:center;justify-content:center;border-radius:14px;font-size:45px}
+footer{text-align:center;padding:10px 0 25px;font-size:12px}
+</style>
+</head>
+<body>
+
+<header>
+<p>ISOLO PRINTX PRESENTS</p>
+<h1>My Magical Grade R Adventure</h1>
+<p>AN INTERACTIVE STORYBOOK</p>
+</header>
+
+<div class="book">
+
+<!-- PAGE 1 -->
+<section class="page active">
+<span class="tag">A personalised graduation story</span>
+<h2>When I Grow Up...</h2>
+<p>My Magical Grade R Adventure</p>
+<div class="illustration" id="coverArt"></div>
+<h2 style="color:#e18ab3">Naledi's Story</h2>
+<p class="star">★ ✦ ★</p>
+<p class="small">A little dreamer with a big future</p>
+</section>
+
+<!-- PAGE 2 -->
+<section class="page">
+<span class="tag">Chapter One</span>
+<h2>Hello, I'm Naledi!</h2>
+<div class="illustration" id="introArt"></div>
+<p>My name is Naledi. I love learning new things, making friends and discovering the world.</p>
+<p>Today I am celebrating a very special milestone...</p>
+<h3>I finished Grade R!</h3>
+</section>
+
+<!-- PAGE 3 -->
+<section class="page">
+<span class="tag">Chapter Two</span>
+<h2>My Big Dream</h2>
+<div class="illustration" id="doctorArt"></div>
+<p>When I grow up, I want to be a <b>doctor!</b></p>
+<p>I dream of helping people feel better and making my community a happier place.</p>
+<p class="star">✦ ★ ✦</p>
+</section>
+
+<!-- PAGE 4 -->
+<section class="page">
+<span class="tag">Let's Get Creative</span>
+<h2>Colour My Dream!</h2>
+<p>Colour Naledi's doctor outfit.</p>
+<div class="illustration" id="colourArt"></div>
+<div class="activity">My favourite colour is: ______________</div>
+<p class="small">Colour this page in your printed booklet.</p>
+</section>
+
+<!-- PAGE 5 -->
+<section class="page">
+<span class="tag">My School Memories</span>
+<h2>My Happy Classroom</h2>
+<p>Grade R was filled with colours, stories and wonderful friends.</p>
+<div style="font-size:80px;margin:35px 0">🏫 🎨 📚</div>
+<div class="activity">
+<h3>Draw your favourite school memory</h3>
+<div style="height:130px;background:white;border-radius:10px"></div>
+</div>
+</section>
+
+<!-- PAGE 6 -->
+<section class="page">
+<span class="tag">Fun Activity</span>
+<h2>Match My Tools!</h2>
+<p>Which things might a doctor use?</p>
+<div class="grid">
+<div class="tile">🩺</div>
+<div class="tile">⚽</div>
+<div class="tile">🌡️</div>
+<div class="tile">🎸</div>
+</div>
+<div class="activity">
+Tap the correct tools!
+<p id="answer" style="font-weight:bold"></p>
+</div>
+<p class="small">In the physical booklet, children can circle their answers.</p>
+</section>
+
+<!-- PAGE 7 -->
+<section class="page">
+<span class="tag">Something Magical</span>
+<h2>My AR Magic Moment</h2>
+<p>Imagine seeing your Grade R graduation memories come to life!</p>
+<div style="font-size:85px;margin:25px">🎓 ✨ 📱</div>
+<div class="qr">QR</div>
+<p><b>Scan to watch our graduation adventure!</b></p>
+<p class="small">Demonstration only. The real video QR code will be added after filming and school approval.</p>
+</section>
+
+<!-- PAGE 8 -->
+<section class="page">
+<span class="tag">The Beginning of Something Wonderful</span>
+<h2>Goodbye Grade R!</h2>
+<div class="illustration" id="endingArt"></div>
+<h2 style="color:#df80a9">Hello Grade 1!</h2>
+<p>Dear Naledi, keep learning, keep dreaming and always believe in yourself.</p>
+<p class="star">★ ★ ★</p>
+<p><b>Your adventure is just beginning!</b></p>
+<p class="small">Made with love by Isolo Printx</p>
+</section>
+
+<div class="controls">
+<button id="prev" onclick="move(-1)">← Previous</button>
+<span class="counter" id="count">1 / 8</span>
+<button id="next" onclick="move(1)">Next →</button>
+</div>
+</div>
+
+<footer>© Isolo Printx | Grade R Dream Adventure</footer>
+
+<script>
+let current=0;
+const pages=document.querySelectorAll(".page");
+
+function showPage(){
+pages.forEach((p,i)=>p.classList.toggle("active",i===current));
+document.getElementById("count").textContent=(current+1)+" / "+pages.length;
+document.getElementById("prev").disabled=current===0;
+document.getElementById("next").disabled=current===pages.length-1;
+window.scrollTo({top:0,behavior:"smooth"});
+}
+function move(n){
+current=Math.max(0,Math.min(pages.length-1,current+n));
+showPage();
+}
+let touchStart=0;
+document.querySelector(".book").addEventListener("touchstart",e=>{
+touchStart=e.changedTouches[0].screenX;
+},{passive:true});
+document.querySelector(".book").addEventListener("touchend",e=>{
+let diff=e.changedTouches[0].screenX-touchStart;
+if(Math.abs(diff)>65)move(diff<0?1:-1);
+},{passive:true});
+
+const character=(coat=true,outline=false)=>`
+<svg viewBox="0 0 260 280" xmlns="http://www.w3.org/2000/svg">
+<ellipse cx="130" cy="264" rx="78" ry="10" fill="#ddd3ef"/>
+<path d="M90 194 Q130 172 170 194 L185 253 L75 253Z" fill="${outline?'white':coat?'#fff':'#b49bed'}" stroke="#4c3768" stroke-width="3"/>
+<path d="M120 192 L130 222 L140 192" fill="${outline?'white':'#e8a4bb'}" stroke="#4c3768" stroke-width="2"/>
+<path d="M95 208 L77 243 M165 208 L183 243" stroke="#4c3768" stroke-width="13" stroke-linecap="round"/>
+<circle cx="130" cy="113" r="65" fill="#25202e"/>
+<circle cx="75" cy="79" r="24" fill="#25202e"/>
+<circle cx="100" cy="53" r="26" fill="#25202e"/>
+<circle cx="136" cy="48" r="27" fill="#25202e"/>
+<circle cx="169" cy="65" r="26" fill="#25202e"/>
+<circle cx="185" cy="94" r="23" fill="#25202e"/>
+<ellipse cx="130" cy="123" rx="48" ry="58" fill="${outline?'white':'#9b603e'}" stroke="#513626" stroke-width="2"/>
+<path d="M83 106 Q91 66 130 75 Q164 66 178 105 Q155 90 143 78 Q113 105 83 106" fill="#25202e"/>
+<ellipse cx="113" cy="122" rx="4" ry="5" fill="#211925"/>
+<ellipse cx="149" cy="122" rx="4" ry="5" fill="#211925"/>
+<path d="M119 147 Q131 159 144 147" fill="none" stroke="#6d3340" stroke-width="3" stroke-linecap="round"/>
+<circle cx="96" cy="137" r="8" fill="#f3a0a0" opacity=".35"/>
+<circle cx="164" cy="137" r="8" fill="#f3a0a0" opacity=".35"/>
+${coat?'<path d="M110 208 Q130 242 150 208" fill="none" stroke="#7671a6" stroke-width="3"/><circle cx="130" cy="235" r="7" fill="#9bbbd0" stroke="#4c3768" stroke-width="2"/>':''}
+<path d="M111 253 L109 268 M149 253 L151 268" stroke="#513626" stroke-width="11" stroke-linecap="round"/>
+</svg>`;
+
+["coverArt","introArt","doctorArt","endingArt"].forEach(id=>{
+document.getElementById(id).innerHTML=character(id!=="introArt");
+});
+document.getElementById("colourArt").innerHTML=character(true,true);
+
+document.querySelectorAll(".tile").forEach((tile,i)=>{
+tile.addEventListener("click",()=>{
+document.getElementById("answer").textContent=
+(i===0||i===2)?"Correct! Great job! ⭐":"Try another one!";
+});
+});
+showPage();
+</script>
+</body>
+</html>
