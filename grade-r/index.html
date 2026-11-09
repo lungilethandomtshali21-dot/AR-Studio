@@ -4,155 +4,188 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Naledi's Magical Grade R Adventure | Isolo Printx</title>
+<title>Naledi's Grade R Adventure | Isolo Printx</title>
+
 <style>
-*{box-sizing:border-box}
-body{
+:root {
+  --purple:#7145b5;
+  --ink:#382d60;
+  --pink:#f5d4e9;
+  --lavender:#e9ddfa;
+}
+* { box-sizing:border-box; }
+body {
   margin:0;
-  font-family:Arial,sans-serif;
-  background:linear-gradient(145deg,#e5d9ff,#fbd7e9,#d8f1ff);
-  color:#382c65;
-  min-height:100vh
+  font-family:Arial,Helvetica,sans-serif;
+  color:var(--ink);
+  background:linear-gradient(145deg,#e7dcff,#fbdbe9,#d9efff);
+  min-height:100vh;
 }
-header{text-align:center;padding:22px 12px 10px}
-header h1{font-size:22px;margin:5px}
-header p{font-size:12px;letter-spacing:2px}
-.book{max-width:470px;margin:10px auto;padding:12px}
-.page{
-  display:none;
-  background:#fffdf9;
-  border-radius:20px;
-  min-height:570px;
-  padding:25px 22px;
-  box-shadow:0 14px 35px #60418a35;
+header {
   text-align:center;
-  position:relative;
-  overflow:hidden
+  padding:22px 12px 8px;
 }
-.page.active{display:block;animation:turn .3s ease}
-@keyframes turn{
-  from{opacity:.3;transform:translateX(15px)}
-  to{opacity:1;transform:translateX(0)}
+header h1 {font-size:23px;margin:8px 0}
+header p {font-size:12px;letter-spacing:1.5px}
+.book {max-width:490px;margin:auto;padding:12px}
+.page {
+  display:none;
+  background:#fffdfb;
+  border-radius:22px;
+  min-height:590px;
+  padding:26px 22px;
+  text-align:center;
+  box-shadow:0 15px 40px #54347830;
 }
-h2{font-size:28px;color:#7848b8;margin:16px 0}
-h3{color:#a052ad}
-p{line-height:1.6}
-.tag{
+.page.active {
+  display:block;
+  animation:appear .3s ease;
+}
+@keyframes appear {
+  from {opacity:.3;transform:translateX(12px)}
+  to {opacity:1;transform:translateX(0)}
+}
+h2 {font-size:27px;color:var(--purple);margin:17px 0}
+h3 {color:#a052ad}
+p {line-height:1.6}
+.tag {
   display:inline-block;
-  background:#f7d6f0;
-  padding:8px 15px;
+  background:var(--pink);
   border-radius:30px;
+  padding:8px 16px;
   font-size:12px;
-  font-weight:bold
+  font-weight:bold;
 }
-.illustration{
+.illustration {
   width:100%;
   max-width:280px;
-  height:270px;
-  margin:15px auto
+  height:275px;
+  margin:15px auto;
 }
-.illustration svg{width:100%;height:100%}
-.star{color:#f4a42e;font-size:27px}
-.controls{
+.illustration svg {width:100%;height:100%}
+.star {color:#e8a229;font-size:27px}
+.controls {
   display:flex;
   justify-content:space-between;
   align-items:center;
-  gap:10px;
-  margin:20px auto
+  gap:8px;
+  margin:18px 0;
 }
-button{
-  background:#7548bd;
+button {
+  background:var(--purple);
   color:white;
   border:0;
-  border-radius:30px;
-  padding:14px 22px;
+  border-radius:28px;
+  padding:13px 17px;
   font-weight:bold;
-  font-size:15px;
-  cursor:pointer
+  cursor:pointer;
 }
-button:disabled{opacity:.35}
-.counter{font-size:13px;font-weight:bold}
-.small{font-size:13px;color:#75668c}
-.activity{
+button:disabled {opacity:.35;cursor:default}
+.counter {font-size:13px;font-weight:bold}
+.small {font-size:13px;color:#75668c}
+.activity {
   background:#f7f0ff;
   border:2px dashed #b99ae4;
   border-radius:15px;
-  padding:16px;
-  margin-top:18px
+  padding:17px;
+  margin-top:20px;
 }
-.grid{
+.grid {
   display:grid;
   grid-template-columns:1fr 1fr;
   gap:12px;
-  margin-top:15px
+  margin:18px 0;
 }
-.tile{
+.tile {
   background:white;
+  color:#382d60;
   border:2px solid #d6b7f4;
-  border-radius:12px;
-  padding:15px;
-  font-size:30px;
-  cursor:pointer
+  border-radius:13px;
+  padding:18px;
+  font-size:32px;
 }
-.qr{
+.tile.correct {background:#d9f5e7;border-color:#48a979}
+.tile.wrong {background:#ffe4e4;border-color:#d47a7a}
+
+/* INTERACTIVE PUZZLE */
+#puzzleBoard {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:4px;
+  width:min(100%,300px);
+  aspect-ratio:1;
+  padding:5px;
   margin:25px auto;
+  background:#e9d9fa;
+  border-radius:15px;
+}
+.puzzle-piece {
+  width:100%;
+  aspect-ratio:1;
+  padding:0;
+  border:2px solid white;
+  border-radius:7px;
+  background-repeat:no-repeat;
+  background-size:300% 300%;
+  cursor:pointer;
+}
+.puzzle-piece.selected {
+  border:4px solid #f0a432;
+  transform:scale(.95);
+}
+#puzzleMessage {
+  min-height:28px;
+  font-weight:bold;
+  color:var(--purple);
+}
+
+/* AR EXPERIENCE */
+.ar-panel {
+  background:linear-gradient(135deg,#f2e7ff,#ffe6f2);
+  border-radius:20px;
+  padding:18px;
+  margin:22px 0;
+}
+.qr-placeholder {
+  width:145px;
+  height:145px;
   border:3px dashed #a78bd1;
-  width:150px;
-  height:150px;
+  background:white;
+  border-radius:15px;
   display:flex;
   align-items:center;
   justify-content:center;
-  border-radius:14px;
-  font-size:45px
+  margin:18px auto;
+  font-weight:bold;
+  color:#8061a7;
 }
-footer{
+.ar-steps {
+  text-align:left;
+  font-size:14px;
+  line-height:1.7;
+}
+footer {
   text-align:center;
-  padding:10px 0 25px;
-  font-size:12px
+  font-size:12px;
+  padding:10px 12px 28px;
+}
+@media(max-width:420px) {
+  .page {padding:22px 15px;min-height:550px}
+  h2 {font-size:24px}
+  .controls button {padding:12px}
 }
 </style>
-#puzzleBoard {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 4px;
-  width: min(100%, 300px);
-  aspect-ratio: 1;
-  margin: 25px auto;
-  padding: 5px;
-  background: #e9d9fa;
-  border-radius: 15px;
-}
-
-.puzzle-piece {
-  background-color: white;
-  background-size: 300% 300%;
-  border: 2px solid white;
-  border-radius: 8px;
-  cursor: pointer;
-  aspect-ratio: 1;
-  padding: 0;
-}
-
-.puzzle-piece.selected {
-  border: 4px solid #f0a432;
-  transform: scale(.95);
-}
-
-#puzzleMessage {
-  font-weight: bold;
-  color: #7848b8;
-}
-
 </head>
+
 <body>
 
 <header>
-<p>MASIBAMBANE COLLEGE • GRADE R 2026</p>
-<h1>My Magical Grade R Adventure</h1>
-<p>CREATED BY ISOLO PRINTX</p>
+  <p>MASIBAMBANE COLLEGE • GRADE R 2026</p>
+  <h1>My Magical Grade R Adventure</h1>
+  <p>CREATED BY ISOLO PRINTX</p>
 </header>
 
-<div class="book">
+<main class="book">
 
 <!-- PAGE 1: COVER -->
 <section class="page active">
@@ -160,7 +193,7 @@ footer{
   <h2>When I Grow Up...</h2>
   <p>My Magical Grade R Adventure</p>
   <div class="illustration" id="coverArt"></div>
-  <h2 style="color:#e18ab3">Naledi's Story</h2>
+  <h2 style="color:#d978a5">Naledi's Story</h2>
   <p class="star">★ ✦ ★</p>
   <p class="small">A little dreamer with a big future</p>
 </section>
@@ -174,10 +207,8 @@ footer{
     My name is Naledi. I love learning new things,
     making friends and discovering the world.
   </p>
-  <p>
-    Today I am celebrating a very special milestone...
-  </p>
   <h3>I finished Grade R!</h3>
+  <p>Now I'm ready for my next big adventure.</p>
 </section>
 
 <!-- PAGE 3: CAREER DREAM -->
@@ -185,12 +216,10 @@ footer{
   <span class="tag">Chapter Two</span>
   <h2>My Big Dream</h2>
   <div class="illustration" id="doctorArt"></div>
+  <p>When I grow up, I want to be a <b>doctor!</b></p>
   <p>
-    When I grow up, I want to be a <b>doctor!</b>
-  </p>
-  <p>
-    I dream of helping people feel better and
-    making my community a happier place.
+    I dream of helping people feel better
+    and making my community a happier place.
   </p>
   <p class="star">✦ ★ ✦</p>
 </section>
@@ -199,14 +228,12 @@ footer{
 <section class="page">
   <span class="tag">Let's Get Creative</span>
   <h2>Colour My Dream!</h2>
-  <p>Colour Naledi's doctor outfit.</p>
+  <p>Colour Naledi's future doctor outfit.</p>
   <div class="illustration" id="colourArt"></div>
   <div class="activity">
     My favourite colour is: ______________
   </div>
-  <p class="small">
-    Colour this page in your printed booklet.
-  </p>
+  <p class="small">Colour this page in your printed booklet.</p>
 </section>
 
 <!-- PAGE 5: SCHOOL MEMORIES -->
@@ -214,166 +241,135 @@ footer{
   <span class="tag">My School Memories</span>
   <h2>My Happy Classroom</h2>
   <p>
-    Grade R was filled with colours, stories
-    and wonderful friends.
+    Grade R was filled with colours, stories,
+    discoveries and wonderful friends.
   </p>
-  <div style="font-size:80px;margin:35px 0">
+  <div style="font-size:75px;margin:32px 0">
     🏫 🎨 📚
   </div>
   <div class="activity">
     <h3>Draw your favourite school memory</h3>
-    <div style="height:130px;background:white;border-radius:10px"></div>
+    <div style="height:140px;background:white;border-radius:10px"></div>
   </div>
 </section>
 
-<!-- PAGE 6: PUZZLE ACTIVITY -->
+<!-- PAGE 6: MATCHING ACTIVITY -->
 <section class="page">
   <span class="tag">Fun Activity</span>
   <h2>Match My Tools!</h2>
   <p>Which things might a doctor use?</p>
+
   <div class="grid">
-    <div class="tile">🩺</div>
-    <div class="tile">⚽</div>
-    <div class="tile">🌡️</div>
-    <div class="tile">🎸</div>
+    <button class="tile" data-correct="true">🩺</button>
+    <button class="tile" data-correct="false">⚽</button>
+    <button class="tile" data-correct="true">🌡️</button>
+    <button class="tile" data-correct="false">🎸</button>
   </div>
+
   <div class="activity">
     Tap the correct tools!
-    <p id="answer" style="font-weight:bold"></p>
+    <p id="answer" aria-live="polite"></p>
   </div>
-  <p class="small">
-    In the printed booklet, children can circle their answers.
-  </p>
 </section>
 
-<!-- PAGE 7: PERSONALISED AR CAREER EXPERIENCE -->
-<section class="page">
-  <span class="tag">My Future, My Dream</span>
-
-  <h2>Watch My Dream Come to Life!</h2>
-
-  <p>
-    Every child has a dream of who they want to become.
-    This is my special story!
-  </p>
-
-  <div style="font-size:85px;margin:25px">
-    🩺 ✨ 📱
-  </div>
-
-  <div class="qr">QR</div>
-
-  <p><b>Scan to Meet the Future Me!</b></p>
-
-  <p>
-    Watch my recorded introduction and discover
-    an animated character of me in my dream career.
-  </p>
-
-  <p class="small">
-    A personalised experience created by Isolo Printx.
-  </p>
-</section>
-<!-- INTERACTIVE CAREER PUZZLE -->
+<!-- PAGE 7: INTERACTIVE PICTURE PUZZLE -->
 <section class="page">
   <span class="tag">My Career Puzzle</span>
-
   <h2>Put My Dream Together!</h2>
-
   <p>
-    Help Naledi complete her picture
+    Help Naledi put together her picture
     as a future doctor.
   </p>
 
-  <div id="puzzleBoard"></div>
+  <div id="puzzleBoard" aria-label="Nine-piece picture puzzle"></div>
 
-  <p id="puzzleMessage">
+  <p id="puzzleMessage" aria-live="polite">
     Tap two pieces to swap them!
   </p>
 
-  <button onclick="shufflePuzzle()">
+  <button type="button" onclick="shufflePuzzle()">
     Shuffle Again ↻
   </button>
 
   <p class="small">
-    Complete the picture to reveal
-    Naledi's dream career.
+    Complete the picture to reveal Naledi's dream career.
   </p>
 </section>
 
+<!-- PAGE 8: AR FUTURE CAREER EXPERIENCE -->
+<section class="page">
+  <span class="tag">My Future, My Dream</span>
+  <h2>Watch My Dream Come to Life!</h2>
 
-<!-- PAGE 8: CLOSING -->
+  <p>
+    Every child has a dream of who they want to become.
+    This is Naledi's special story.
+  </p>
+
+  <div class="ar-panel">
+    <div style="font-size:60px">🩺 ✨ 📱</div>
+
+    <div class="qr-placeholder">
+      QR CODE<br>COMING SOON
+    </div>
+
+    <h3>Scan to Meet the Future Me!</h3>
+
+    <p>
+      Watch Naledi introduce herself on video,
+      share her dream of becoming a doctor,
+      and meet her personalised animated
+      future-career character.
+    </p>
+  </div>
+
+  <div class="ar-steps">
+    <p><b>1.</b> Naledi is filmed introducing herself and her dream career.</p>
+    <p><b>2.</b> Her personalised doctor character is created and animated.</p>
+    <p><b>3.</b> Parents scan her QR code to open her special digital experience.</p>
+  </div>
+
+  <p class="small">
+    Personalised career storytelling by Isolo Printx.
+  </p>
+</section>
+
+<!-- PAGE 9: CLOSING -->
 <section class="page">
   <span class="tag">The Beginning of Something Wonderful</span>
   <h2>Goodbye Grade R!</h2>
   <div class="illustration" id="endingArt"></div>
-  <h2 style="color:#df80a9">Hello Grade 1!</h2>
+  <h2 style="color:#d978a5">Hello Grade 1!</h2>
   <p>
     Dear Naledi, keep learning, keep dreaming
     and always believe in yourself.
   </p>
   <p class="star">★ ★ ★</p>
   <p><b>Your adventure is just beginning!</b></p>
-  <p class="small">Made with love by Isolo Printx</p>
+  <p class="small">Created by Isolo Printx</p>
 </section>
 
-<!-- NAVIGATION -->
+<!-- BOOK NAVIGATION -->
 <div class="controls">
   <button id="prev" onclick="move(-1)">← Previous</button>
-  <span class="counter" id="count">1 / 8</span>
+  <span class="counter" id="count">1 / 9</span>
   <button id="next" onclick="move(1)">Next →</button>
 </div>
 
-</div>
+</main>
 
 <footer>
-© Isolo Printx | Masibambane College Grade R 2026
+  © Isolo Printx | Masibambane College Grade R 2026
 </footer>
 
 <script>
-// DIGITAL PUZZLE
-let puzzleOrder = [0,1,2,3,4,5,6,7,8];
-let selectedPiece = null;
-
-// Create a puzzle image using Naledi's SVG illustration.
-const puzzleImage = `
-<svg xmlns="http://www.w3.org/2000/svg"
-viewBox="0 0 300 300">
-<rect width="300" height="300" fill="#f7dff0"/>
-<circle cx="150" cy="150" r="125" fill="#e7d6ff"/>
-<g transform="translate(20 10)">
-${character(true).replace(
-  /<svg[^>]*>|<\/svg>/g,""
-)}
-</g>
-<text x="150" y="285" text-anchor="middle"
-font-size="18" font-family="Arial"
-font-weight="bold" fill="#7848b8">
-FUTURE DOCTOR
-</text>
-</svg>`;
-
-const puzzleURL =
-  "data:image/svg+xml;charset=utf-8," +
-  encodeURIComponent(puzzleImage);
-
-function renderPuzzle() {
-  const board = document.getElementById("puzzleBoard");
-  board.innerHTML = "";
-
-  puzzleOrder.forEach((piece, position) => {
-    const button = document.createElement("button");
-    button.className = "puzzle-piece";
-    button.type = "button";
-
-    button.style.backgroundImage =
-
+// PAGE NAVIGATION
 let current=0;
 const pages=document.querySelectorAll(".page");
 
 function showPage(){
-  pages.forEach((p,i)=>{
-    p.classList.toggle("active",i===current);
+  pages.forEach((page,index)=>{
+    page.classList.toggle("active",index===current);
   });
 
   document.getElementById("count").textContent=
@@ -385,98 +381,96 @@ function showPage(){
   window.scrollTo({top:0,behavior:"smooth"});
 }
 
-function move(n){
+function move(direction){
   current=Math.max(
     0,
-    Math.min(pages.length-1,current+n)
+    Math.min(pages.length-1,current+direction)
   );
   showPage();
 }
 
-// SWIPE NAVIGATION
+// MOBILE SWIPE
 let touchStart=0;
+const book=document.querySelector(".book");
 
-document.querySelector(".book").addEventListener(
-  "touchstart",
-  e=>{
-    touchStart=e.changedTouches[0].screenX;
-  },
-  {passive:true}
-);
+book.addEventListener("touchstart",event=>{
+  touchStart=event.changedTouches[0].screenX;
+},{passive:true});
 
-document.querySelector(".book").addEventListener(
-  "touchend",
-  e=>{
-    let diff=e.changedTouches[0].screenX-touchStart;
-    if(Math.abs(diff)>65){
-      move(diff<0?1:-1);
-    }
-  },
-  {passive:true}
-);
+book.addEventListener("touchend",event=>{
+  const difference=
+    event.changedTouches[0].screenX-touchStart;
 
-// NALEDI CHARACTER
-const character=(coat=true,outline=false)=>`
-<svg viewBox="0 0 260 280"
-xmlns="http://www.w3.org/2000/svg">
+  if(Math.abs(difference)>65){
+    move(difference<0?1:-1);
+  }
+},{passive:true});
 
-<ellipse cx="130" cy="264" rx="78" ry="10" fill="#ddd3ef"/>
+// NALEDI'S ILLUSTRATION
+function character(coat=true,outline=false){
+  return `
+  <svg viewBox="0 0 260 280"
+       xmlns="http://www.w3.org/2000/svg">
+    <ellipse cx="130" cy="264" rx="78" ry="10"
+             fill="#ddd3ef"/>
 
-<path d="M90 194 Q130 172 170 194 L185 253 L75 253Z"
-fill="${outline?'white':coat?'#fff':'#b49bed'}"
-stroke="#4c3768" stroke-width="3"/>
+    <path d="M90 194 Q130 172 170 194
+             L185 253 L75 253Z"
+          fill="${outline?'white':coat?'#fff':'#b49bed'}"
+          stroke="#4c3768" stroke-width="3"/>
 
-<path d="M120 192 L130 222 L140 192"
-fill="${outline?'white':'#e8a4bb'}"
-stroke="#4c3768" stroke-width="2"/>
+    <path d="M120 192 L130 222 L140 192"
+          fill="${outline?'white':'#e8a4bb'}"
+          stroke="#4c3768" stroke-width="2"/>
 
-<path d="M95 208 L77 243 M165 208 L183 243"
-stroke="#4c3768" stroke-width="13"
-stroke-linecap="round"/>
+    <path d="M95 208 L77 243 M165 208 L183 243"
+          stroke="#4c3768" stroke-width="13"
+          stroke-linecap="round"/>
 
-<circle cx="130" cy="113" r="65" fill="#25202e"/>
-<circle cx="75" cy="79" r="24" fill="#25202e"/>
-<circle cx="100" cy="53" r="26" fill="#25202e"/>
-<circle cx="136" cy="48" r="27" fill="#25202e"/>
-<circle cx="169" cy="65" r="26" fill="#25202e"/>
-<circle cx="185" cy="94" r="23" fill="#25202e"/>
+    <circle cx="130" cy="113" r="65" fill="#25202e"/>
+    <circle cx="75" cy="79" r="24" fill="#25202e"/>
+    <circle cx="100" cy="53" r="26" fill="#25202e"/>
+    <circle cx="136" cy="48" r="27" fill="#25202e"/>
+    <circle cx="169" cy="65" r="26" fill="#25202e"/>
+    <circle cx="185" cy="94" r="23" fill="#25202e"/>
 
-<ellipse cx="130" cy="123" rx="48" ry="58"
-fill="${outline?'white':'#9b603e'}"
-stroke="#513626" stroke-width="2"/>
+    <ellipse cx="130" cy="123" rx="48" ry="58"
+             fill="${outline?'white':'#9b603e'}"
+             stroke="#513626" stroke-width="2"/>
 
-<path d="M83 106 Q91 66 130 75
-Q164 66 178 105
-Q155 90 143 78
-Q113 105 83 106"
-fill="#25202e"/>
+    <path d="M83 106 Q91 66 130 75
+             Q164 66 178 105
+             Q155 90 143 78
+             Q113 105 83 106"
+          fill="#25202e"/>
 
-<ellipse cx="113" cy="122" rx="4" ry="5" fill="#211925"/>
-<ellipse cx="149" cy="122" rx="4" ry="5" fill="#211925"/>
+    <ellipse cx="113" cy="122" rx="4" ry="5" fill="#211925"/>
+    <ellipse cx="149" cy="122" rx="4" ry="5" fill="#211925"/>
 
-<path d="M119 147 Q131 159 144 147"
-fill="none" stroke="#6d3340"
-stroke-width="3" stroke-linecap="round"/>
+    <path d="M119 147 Q131 159 144 147"
+          fill="none" stroke="#6d3340"
+          stroke-width="3" stroke-linecap="round"/>
 
-<circle cx="96" cy="137" r="8"
-fill="#f3a0a0" opacity=".35"/>
+    <circle cx="96" cy="137" r="8"
+            fill="#f3a0a0" opacity=".35"/>
+    <circle cx="164" cy="137" r="8"
+            fill="#f3a0a0" opacity=".35"/>
 
-<circle cx="164" cy="137" r="8"
-fill="#f3a0a0" opacity=".35"/>
+    ${coat?`
+      <path d="M110 208 Q130 242 150 208"
+            fill="none" stroke="#7671a6" stroke-width="3"/>
+      <circle cx="130" cy="235" r="7"
+              fill="#9bbbd0" stroke="#4c3768"
+              stroke-width="2"/>
+    `:''}
 
-${coat?`
-<path d="M110 208 Q130 242 150 208"
-fill="none" stroke="#7671a6" stroke-width="3"/>
-<circle cx="130" cy="235" r="7"
-fill="#9bbbd0" stroke="#4c3768" stroke-width="2"/>
-`:''}
+    <path d="M111 253 L109 268 M149 253 L151 268"
+          stroke="#513626" stroke-width="11"
+          stroke-linecap="round"/>
+  </svg>`;
+}
 
-<path d="M111 253 L109 268 M149 253 L151 268"
-stroke="#513626" stroke-width="11"
-stroke-linecap="round"/>
-
-</svg>`;
-
+// INSERT CHARACTER INTO STORY PAGES
 [
   "coverArt",
   "introArt",
@@ -490,16 +484,131 @@ stroke-linecap="round"/>
 document.getElementById("colourArt").innerHTML=
   character(true,true);
 
-// INTERACTIVE ACTIVITY
-document.querySelectorAll(".tile").forEach((tile,i)=>{
+// MATCHING ACTIVITY
+document.querySelectorAll(".tile").forEach(tile=>{
   tile.addEventListener("click",()=>{
+    const correct=tile.dataset.correct==="true";
+    tile.classList.remove("correct","wrong");
+    tile.classList.add(correct?"correct":"wrong");
+
     document.getElementById("answer").textContent=
-      (i===0||i===2)
+      correct
       ?"Correct! Great job! ⭐"
       :"Try another one!";
   });
 });
 
+// NINE-PIECE INTERACTIVE PUZZLE
+let puzzleOrder=[0,1,2,3,4,5,6,7,8];
+let selectedPiece=null;
+
+// Generate an image using the same Naledi character.
+const puzzleSVG=`
+<svg xmlns="http://www.w3.org/2000/svg"
+     viewBox="0 0 300 300">
+  <rect width="300" height="300" fill="#f7dff0"/>
+  <circle cx="150" cy="145" r="125" fill="#e7d6ff"/>
+
+  <g transform="translate(20 5)">
+    ${character(true).replace(/<svg[^>]*>|<\/svg>/g,"")}
+  </g>
+
+  <text x="150" y="289"
+        text-anchor="middle"
+        font-size="17"
+        font-family="Arial"
+        font-weight="bold"
+        fill="#7145b5">
+    FUTURE DOCTOR
+  </text>
+</svg>`;
+
+const puzzleURL=
+  "data:image/svg+xml;charset=utf-8,"+
+  encodeURIComponent(puzzleSVG);
+
+function renderPuzzle(){
+  const board=document.getElementById("puzzleBoard");
+  board.innerHTML="";
+
+  puzzleOrder.forEach((piece,position)=>{
+    const button=document.createElement("button");
+    button.type="button";
+    button.className="puzzle-piece";
+    button.setAttribute(
+      "aria-label",
+      "Puzzle piece "+(piece+1)+
+      ", position "+(position+1)
+    );
+
+    const column=piece%3;
+    const row=Math.floor(piece/3);
+
+    button.style.backgroundImage=`url("${puzzleURL}")`;
+    button.style.backgroundPosition=
+      `${column*50}% ${row*50}%`;
+
+    if(selectedPiece===position){
+      button.classList.add("selected");
+    }
+
+    button.addEventListener("click",()=>{
+      selectPuzzlePiece(position);
+    });
+
+    board.appendChild(button);
+  });
+}
+
+function selectPuzzlePiece(position){
+  if(selectedPiece===null){
+    selectedPiece=position;
+    document.getElementById("puzzleMessage").textContent=
+      "Now tap another piece to swap!";
+  }else if(selectedPiece===position){
+    selectedPiece=null;
+  }else{
+    const temp=puzzleOrder[selectedPiece];
+    puzzleOrder[selectedPiece]=puzzleOrder[position];
+    puzzleOrder[position]=temp;
+    selectedPiece=null;
+
+    const solved=puzzleOrder.every(
+      (piece,index)=>piece===index
+    );
+
+    document.getElementById("puzzleMessage").textContent=
+      solved
+      ?"🎉 Amazing! You completed Naledi's dream!"
+      :"Keep going! You can do it!";
+  }
+
+  renderPuzzle();
+}
+
+function shufflePuzzle(){
+  puzzleOrder=[0,1,2,3,4,5,6,7,8];
+
+  for(let i=puzzleOrder.length-1;i>0;i--){
+    const j=Math.floor(Math.random()*(i+1));
+    [puzzleOrder[i],puzzleOrder[j]]=
+      [puzzleOrder[j],puzzleOrder[i]];
+  }
+
+  // Avoid starting with an already completed puzzle.
+  if(puzzleOrder.every((piece,index)=>piece===index)){
+    [puzzleOrder[0],puzzleOrder[1]]=
+      [puzzleOrder[1],puzzleOrder[0]];
+  }
+
+  selectedPiece=null;
+  document.getElementById("puzzleMessage").textContent=
+    "Tap two pieces to swap them!";
+  renderPuzzle();
+}
+
+// INITIALISE BOOKLET
+shufflePuzzle();
 showPage();
 </script>
 
